@@ -4,97 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SentiNexus</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0a0a0a;
-      color: #ffffff;
-    }
-
-    header {
-      background-color: #0d1b2a;
-      padding: 1rem 2rem;
-      display: flex;
-    header h1 {
-      margin: 0;
-      color: #00b4d8;
-    }
-
-    nav a {
-      color: #ffffff;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      background: url('your-linkedin-cover-photo-url.jpg') no-repeat center center/cover;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px #000;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      color: #d3d3d3;
-    }
-
-    .hero button {
-      margin-top: 2rem;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      background-color: #0077b6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .hero button:hover {
-      background-color: #023e8a;
-    }
-
-    footer {
-      background-color: #0d1b2a;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <h1>SentiNexus</h1>
     <nav>
-      <a href="#about.html">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <h2>Empowering Insight Through Emotion</h2>
-    <p>At SentiNexus, we harness the power of sentiment analysis and AI to unlock deeper understanding and drive meaningful connections.</p>
-    <button onclick="location.href='#contact'">Get in Touch</button>
-  </section>
+  <main>
+    <section class="intro">
+      <h2>Welcome to SentiNexus</h2>
+      <p>Empowering insight through emotion. Explore how we use AI and sentiment analysis to drive meaningful innovation.</p>
+    </section>
+
+    <section class="quick-links">
+      <div class="card">
+        <h3><a href="about.html">About Us</a></h3>
+        <p>Learn about our mission, vision, and the story behind SentiNexus.</p>
+      </div>
+      <div class="card">
+        <h3><a href="services.html">Our Services</a></h3>
+        <p>Discover the solutions we offer in sentiment analysis, NLP, and emotional intelligence.</p>
+      </div>
+      <div class="card">
+        <h3><a href="team.html">Meet the Team</a></h3>
+        <p>Get to know the minds behind SentiNexus.</p>
+      </div>
+      <div class="card">
+        <h3><a href="contact.html">Contact</a></h3>
+        <p>Have questions or want to collaborate? Reach out to us.</p>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 SentiNexus. All rights reserved.
+    <p>&copy; 2025 SentiNexus. All rights reserved.</p>
   </footer>
 </body>
 </html>
