@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - SentiNexus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+    }
+
+    header {
+      background-color: #0d1b2a;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00b4d8;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .about-section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      color: #00b4d8;
+      margin-bottom: 1rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #d3d3d3;
+    }
+
+    .highlight {
+      color: #90e0ef;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #0d1b2a;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SentiNexus</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <h2>About SentiNexus</h2>
+    <p>
+      <span class="highlight">SentiNexus</span> is a forward-thinking AI company dedicated to transforming how organizations understand and respond to human emotion. Our mission is to bridge the gap between data and empathy by leveraging cutting-edge sentiment analysis, natural language processing, and behavioral insights.
+    </p>
+    <p>
+      Founded on the belief that emotional intelligence is key to meaningful innovation, SentiN
