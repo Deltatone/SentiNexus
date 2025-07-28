@@ -6,8 +6,25 @@
 </head>
 <body>
   <!-- Your dashboard content here -->
+  <div style="max-width: 400px; margin: 40px auto; text-align: center; font-family: Arial, sans-serif;">
+  <h2>How are you doing today?</h2>
+  <input type="text" id="userFeeling" placeholder="Type your answer here..." style="padding: 8px; width: 70%;">
+  <button onclick="showFeeling()" style="padding: 8px 16px; margin-left: 8px;">Submit</button>
+  <p id="responseMessage" style="margin-top: 20px; color: #0066cc;"></p>
+</div>
+<script>
+  function showFeeling() {
+    const feeling = document.getElementById('userFeeling').value.trim();
+    const response = document.getElementById('responseMessage');
+    if (feeling) {
+      response.textContent = `Thanks for sharing! You said: "${feeling}"`;
+    } else {
+      response.textContent = "Please tell us how you're doing!";
+    }
+  }
+</script>
 
   <!-- Link to your dashboard JS file -->
-  <script src="js/sentinexus-dashboard.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
