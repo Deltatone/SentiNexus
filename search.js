@@ -1,21 +1,15 @@
-const data = [
-  {
-    name: "Habitat for Humanity",
-    type: "Nonprofit",
-    location: "Dallas, TX",
-    difficulty: 3,
-    time_commitment: "Weekly",
-    description: "Build homes for families in need."
-  },
-  {
-    name: "Code for Good",
-    type: "Grassroots",
-    location: "Austin, TX",
-    difficulty: 2,
-    time_commitment: "One-time",
-    description: "Volunteer coding for nonprofits."
-  }
-];
+let data = [];
+
+fetch('opportunities.json')
+  .then(response => response.json())
+  .then(json => {
+    data = json;
+    applyFilters(); // Optional: run initial filter/display
+  })
+  .catch(error => {
+    console.error("Failed to load opportunities:", error);
+  });
+
 
 function applyFilters() {
   const name = document.getElementById("searchName").value.toLowerCase();
