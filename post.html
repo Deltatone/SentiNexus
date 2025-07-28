@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post an Opportunity</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Post a Volunteer Opportunity</h1>
+  </header>
+
+  <form id="opportunityForm">
+    <input type="text" id="name" placeholder="Organization Name" required /><br/>
+    <select id="type" required>
+      <option value="">Select Type</option>
+      <option value="Nonprofit">Nonprofit</option>
+      <option value="Grassroots">Grassroots</option>
+      <option value="Corporate">Corporate</option>
+    </select><br/>
+    <input type="text" id="location" placeholder="Location (City, State)" required /><br/>
+    <label for="difficulty">Difficulty (1-5):</label>
+    <input type="number" id="difficulty" min="1" max="5" required /><br/>
+    <select id="time" required>
+      <option value="">Select Time Commitment</option>
+      <option value="One-time">One-time</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Full-time">Full-time</option>
+    </select><br/>
+    <textarea id="description" placeholder="Opportunity Description" required></textarea><br/>
+    <button type="submit">Submit Opportunity</button>
+  </form>
+
+  <script>
+    document.getElementById("opportunityForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const opportunity = {
+        name: document.getElementById("name").value,
+        type: document.getElementById("type").value,
+        location: document.getElementById("location").value,
+        difficulty: parseInt(document.getElementById("difficulty").value),
+        time_commitment: document.getElementById("time").value,
+        description: document.getElementById("description").value
+      };
+
+      fetch("opportunities.json")
+        .then(response => response.json())
+        .then(data => {
+          data.push(opportunity);
+          return fetch("opportunities.json", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+        })
+        .then(() => {
+          alert("Opportunity submitted successfully!");
+          document.getElementById("opportunityForm").reset();
+        })
+        .catch(error => {
+          console.error("Error submitting opportunity:", error);
+        });
+    });
+  </script>
+</body>
+</html>
