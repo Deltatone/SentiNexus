@@ -1,66 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="favicon1.css">
-<div id="theme-toggle" class="theme-toggle">
-  <img id="theme-icon" src="favicon1.png" alt="Toggle Theme" />
-  <img id="theme-icon" src="favicond.png" alt="Toggle Theme"/>
-</div>
-<link id="light-theme" rel="stylesheet" href="styles.css">
-<link id="dark-theme" rel="stylesheet" href="darkmode.css" disabled>
-<script src="darkmode.js" defer></script>
-  
-  <link rel="icon" href="favicon1.png" type="image/png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SentiNexus</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SentiNexus</title>
+
+    <link rel="icon" href="favicon1.png" type="image/png"> <link rel="stylesheet" href="styles.css" /> </head>
 <body>
-  <header>
-     <h1><a href="index.html">SentiNexus</a></h1>
-    <nav>
-      <ul>
-        <li><a href="login.html">Log in</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search Opportunities</a></li>
-        <li><a href="post.html">Post Opportunities</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
 
-  <main>
-    <section class="intro">
-      <h2>Welcome to SentiNexus</h2>
-      <p>Empowering insight through emotion. Explore how we use AI and sentiment analysis to drive meaningful innovation.</p>
-    </section>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
 
-    <section class="quick-links">
-      <div class="card">
-        <li><a href="about.html">About</a></li>
-        <p>Learn about our mission, vision, and the story behind SentiNexus.</p>
-      </div>
-      <div class="card">
-        <h3><a href="services.html">Our Services</a></h3>
-        <p>Discover the solutions we offer in sentiment analysis, NLP, and emotional intelligence.</p>
-      </div>
-      <div class="card">
-        <h3><a href="team.html">Meet the Team</a></h3>
-        <p>Get to know the minds behind SentiNexus.</p>
-      </div>
-      <div class="card">
-        <h3><a href="contact.html">Contact</a></h3>
-        <p>Have questions or want to collaborate? Reach out to us.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+        <section class="intro">
+            <h2>Welcome to SentiNexus</h2>
+            <p>Empowering insight through emotion. Explore how we use AI and sentiment analysis to drive meaningful innovation.</p>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 SentiNexus. All rights reserved.</p>
-  </footer>
+        <section class="quick-links">
+            <div class="card">
+                <li><a href="about.html">About</a></li>
+                <p>Learn about our mission, vision, and the story behind SentiNexus.</p>
+            </div>
+            <div class="card">
+                <h3><a href="services.html">Our Services</a></h3>
+                <p>Discover the solutions we offer in sentiment analysis, NLP, and emotional intelligence.</p>
+            </div>
+            <div class="card">
+                <h3><a href="team.html">Meet the Team</a></h3>
+                <p>Get to know the minds behind SentiNexus.</p>
+            </div>
+            <div class="card">
+                <h3><a href="contact.html">Contact</a></h3>
+                <p>Have questions or want to collaborate? Reach out to us.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body; // Reference to the body element
+
+            // --- Element Existence Checks ---
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return; // Stop execution if elements are missing
+            }
+
+            // --- Define theme classes and icon sources ---
+            // Ensure 'favicon1.png' is your light theme icon and 'favicond.png' (or similar) is your dark theme icon.
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png', // Your light theme icon
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png', // Your dark theme icon (assuming you have a separate dark icon)
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            // --- Function to apply the theme ---
+            function applyTheme(themeName) {
+                // Remove existing theme classes
+                body.classList.remove(themes.light.className, themes.dark.className);
+
+                // Add the new theme class
+                body.classList.add(themes[themeName].className);
+
+                // Update the theme icon
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+
+                // Update ARIA attribute for accessibility
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+
+                // Store preference in localStorage
+                localStorage.setItem('theme', themeName);
+            }
+
+            // --- Initial Theme Load ---
+            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to 'light' if no preference saved
+            applyTheme(savedTheme);
+
+            // --- Event Listener for Toggle Button ---
+            toggleButton.addEventListener('click', () => {
+                // Determine current theme based on body class
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
