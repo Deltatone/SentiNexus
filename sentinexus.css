@@ -1,7 +1,14 @@
+/* CSS */
 .sentinexus-logo {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800; /* Extra bold */
-  font-size: 2rem;  /* Adjust size as needed */
-  color: #1a1a1a;   /* Professional dark tone */
+  font-weight: 800;
+  font-size: 2rem;
+  color: #1a1a1a;
+  text-decoration: none; /* Removes underline */
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.sentinexus-logo:hover {
+  color: #0077cc; /* Optional hover effect */
 }
