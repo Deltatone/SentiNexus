@@ -1,110 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SentiNexus</title>
+/* ======================================= */
+/* 0. Global Resets & Base Styles        */
+/* ======================================= */
+*, *::before, *::after {
+    box-sizing: border-box; /* Standardize box model across all elements */
+}
 
-    <link rel="icon" href="favicon1.png" type="image/png">
+html {
+    font-size: 16px; /* Base font size */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.65; /* Slightly increased for better readability */
+    -webkit-font-smoothing: antialiased; /* Smoother font rendering on macOS/iOS */
+    -moz-osx-font-smoothing: grayscale; /* Smoother font rendering on macOS/iOS */
 
-    <link rel="stylesheet" href="styles.css" />
+    /* CSS Custom Properties (Variables) defined here and overridden for dark mode */
+    --bg-primary: #f8f9fa; /* Very light gray */
+    --bg-secondary: #ffffff; /* White for cards/header */
+    --text-primary: #212529; /* Dark gray for main text */
+    --text-secondary: #495057; /* Muted gray for less important text */
+    --accent-color: #007bff; /* Primary blue for links/highlights */
+    --accent-hover: #0056b3; /* Darker blue on hover */
+    --border-color: #e9ecef; /* Light border */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Subtle shadow for light mode */
+    --focus-outline-color: #007bff; /* Accent color for focus rings */
 
-</head>
-<body class="light-theme"> <header>
-        <h1><a href="index.html">SentiNexus</a></h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Log in</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="search.html">Search Opportunities</a></li>
-                <li><a href="post.html">Post Opportunities</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
-            <img id="theme-icon" src="favicon1.png" alt="Sun icon for light theme">
-        </button>
-    </header>
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smoother, slightly longer transition */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-    <main>
-        <section class="intro">
-            <h2>Welcome to SentiNexus</h2>
-            <p>Empowering insight through emotion. Explore how we use AI and sentiment analysis to drive meaningful innovation.</p>
-        </section>
+/* Dark Theme Variables */
+body.dark-theme {
+    --bg-primary: #1a202c; /* Dark charcoal */
+    --bg-secondary: #2d3748; /* Slightly lighter dark for cards/header */
+    --text-primary: #e2e8f0; /* Light gray for main text */
+    --text-secondary: #a0aec0; /* Muted light gray */
+    --accent-color: #63b3ed; /* Vibrant blue for links/highlights */
+    --accent-hover: #4299e1; /* Darker blue on hover */
+    --border-color: #4a5568; /* Dark border */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* More pronounced shadow for dark mode */
+    --focus-outline-color: #63b3ed; /* Accent color for focus rings in dark mode */
+}
 
-        <section class="quick-links">
-            <div class="card">
-                <h3><a href="about.html">About SentiNexus</a></h3> <p>Learn about our mission, vision, and the story behind SentiNexus.</p>
-            </div>
-            <div class="card">
-                <h3><a href="services.html">Our Services</a></h3>
-                <p>Discover the solutions we offer in sentiment analysis, NLP, and emotional intelligence.</p>
-            </div>
-            <div class="card">
-                <h3><a href="team.html">Meet the Team</a></h3>
-                <p>Get to know the minds behind SentiNexus.</p>
-            </div>
-            <div class="card">
-                <h3><a href="contact.html">Contact Us</a></h3>
-                <p>Have questions or want to collaborate? Reach out to us.</p>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
-    </footer>
+/* ======================================= */
+/* 1. Typography Enhancements            */
+/* ======================================= */
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButton = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
-            const body = document.body;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    margin-top: 1.8em; /* More space above headings */
+    margin-bottom: 0.8em;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em; /* Slightly tighter for headings */
+}
 
-            if (!toggleButton || !themeIcon || !body) {
-                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
-                return;
-            }
+/* Fluid Typography with clamp() */
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Min 2rem, max 3rem, scales with viewport width */
+}
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
 
-            const themes = {
-                light: {
-                    className: 'light-theme',
-                    iconSrc: 'favicon1.png',
-                    iconAlt: 'Sun icon for light theme'
-                },
-                dark: {
-                    className: 'dark-theme',
-                    iconSrc: 'favicond.png', // Make sure you have this dark mode icon
-                    iconAlt: 'Moon icon for dark theme'
-                }
-            };
+p {
+    margin-bottom: 1.2em; /* More space below paragraphs */
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.1rem); /* Subtle fluid font size for paragraphs */
+}
 
-            function applyTheme(themeName) {
-                body.classList.remove(themes.light.className, themes.dark.className);
-                body.classList.add(themes[themeName].className);
-                themeIcon.src = themes[themeName].iconSrc;
-                themeIcon.alt = themes[themeName].iconAlt;
-                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
-                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
-                localStorage.setItem('theme', themeName);
-            }
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease, background-color 0.3s ease; /* Include background for subtle effects */
+    outline: none; /* Remove default outline, we'll create a custom one */
+}
 
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            applyTheme(savedTheme);
+a:hover {
+    color: var(--accent-hover);
+}
 
-            toggleButton.addEventListener('click', () => {
-                const currentThemeIsDark = body.classList.contains(themes.dark.className);
-                const newTheme = currentThemeIsDark ? 'light' : 'dark';
-                applyTheme(newTheme);
-            });
-        });
-    </script>
-</body>
-</html>
+a:focus-visible { /* Only show outline when navigating with keyboard */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 3px;
+    border-radius: 2px; /* Slight rounding for focus outline */
+}
+
+
+/* ======================================= */
+/* 2. Layout & Structure                 */
+/* ======================================= */
+
+main {
+    flex-grow: 1;
+    padding: 3rem 2rem; /* More generous vertical padding */
+    max-width: 1280px; /* Slightly wider content area */
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ======================================= */
+/* 3. Header & Navigation                */
+/* ======================================= */
+
+header {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem clamp(1rem, 4vw, 2rem); /* Responsive horizontal padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color); /* More refined shadow */
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-
