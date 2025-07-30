@@ -11,6 +11,10 @@ header {
     align-items: center;
     margin-bottom: 20px;
 }
+.icon-class {
+  outline: none;
+  box-shadow: none;
+}
 
 #theme-toggle {
     background: none;
