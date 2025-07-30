@@ -18,7 +18,7 @@
     if (theme === 'dark') {
       lightTheme.disabled = true;
       darkTheme.disabled = false;
-      icon.src = 'sun-icon.svg'; // Optional: switch icon
+      icon.src = 'favicon1.png'; // Optional: switch icon
     } else {
       lightTheme.disabled = false;
       darkTheme.disabled = true;
