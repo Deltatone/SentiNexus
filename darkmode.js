@@ -4,7 +4,6 @@
   const lightTheme = document.getElementById('light-theme');
   const darkTheme = document.getElementById('dark-theme');
 
-  // Load saved theme
   const savedTheme = localStorage.getItem('theme') || 'light';
   applyTheme(savedTheme);
 
@@ -19,11 +18,11 @@
     if (theme === 'dark') {
       lightTheme.disabled = true;
       darkTheme.disabled = false;
-      icon.src = 'sun-icon.svg'; // Optional: change icon
+      icon.src = 'sun-icon.svg'; // Optional: switch icon
     } else {
       lightTheme.disabled = false;
       darkTheme.disabled = true;
-      icon.src = 'favicon1.png'; // Optional: change icon
+      icon.src = 'favicon1.png'; // Optional: switch icon
     }
   }
 </script>
