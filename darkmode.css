@@ -1,29 +1,59 @@
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
+/* Base styles (apply to both themes, or default for light) */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
-body.light-mode {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-body.dark-mode {
-  --bg-color: #121212;
-  --text-color: #f0f0f0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+#theme-toggle {
+    background: none;
+    border: 1px solid currentColor; /* Border adapts to text color */
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.theme-toggle {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  z-index: 1000;
+#theme-toggle:hover {
+    opacity: 0.8;
 }
 
-.theme-toggle img {
-  width: 32px;
-  height: 32px;
+#theme-icon {
+    width: 24px;
+    height: 24px;
+    display: block; /* Remove extra space below image */
+}
+
+/* Light theme specific styles (default) */
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.light-theme h1 {
+    color: #007bff;
+}
+
+/* Dark theme specific styles */
+body.dark-theme {
+    background-color: #282c34;
+    color: #e0e0e0;
+}
+
+body.dark-theme h1 {
+    color: #61dafb; /* A nice blue for dark theme */
+}
+
+body.dark-theme #theme-toggle {
+    border-color: #e0e0e0;
 }
