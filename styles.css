@@ -190,6 +190,50 @@ nav a:focus {
     transform: scale(0.9);
 }
 
+/* Basic Footer Styling */
+.site-footer {
+    background-color: #f2f2f2; /* Light grey background */
+    color: #333; /* Dark grey text */
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px; /* Space above the footer */
+}
+
+/* Social Links Container */
+.social-links {
+    margin-bottom: 15px;
+}
+
+/* Individual Social Link (the 'a' tag) */
+.social-links a {
+    display: inline-block; /* Allows side-by-side display */
+    margin: 0 10px; /* Space between icons */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Social Icon (the 'img' or 'i' tag inside the link) */
+.social-links img {
+    width: 30px; /* Size of your icons */
+    height: 30px; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align nicely with text if any */
+}
+
+/* Hover effect for icons */
+.social-links a:hover {
+    transform: translateY(-3px); /* Slightly lift on hover */
+}
+
+/* If using Font Awesome or SVG and you want to style the icon directly */
+/*
+.social-links i {
+    font-size: 30px;
+    color: #555;
+}
+
+.social-links i:hover {
+    color: #007bff; // Example hover color
+}
+*/
 
 /* ======================================= */
 /* 4. Section & Card Styles              */
