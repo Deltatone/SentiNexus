@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SentiNexus</title>
+
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body class="light-theme"> <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welcome to SentiNexus</h2>
+            <p>Empowering insight through emotion. Explore how we use AI and sentiment analysis to drive meaningful innovation.</p>
+        </section>
+
+        <section class="quick-links">
+            <div class="card">
+                <h3><a href="about.html">About SentiNexus</a></h3> <p>Learn about our mission, vision, and the story behind SentiNexus.</p>
+            </div>
+            <div class="card">
+                <h3><a href="services.html">Our Services</a></h3>
+                <p>Discover the solutions we offer in sentiment analysis, NLP, and emotional intelligence.</p>
+            </div>
+            <div class="card">
+                <h3><a href="team.html">Meet the Team</a></h3>
+                <p>Get to know the minds behind SentiNexus.</p>
+            </div>
+            <div class="card">
+                <h3><a href="contact.html">Contact Us</a></h3>
+                <p>Have questions or want to collaborate? Reach out to us.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png', // Make sure you have this dark mode icon
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
