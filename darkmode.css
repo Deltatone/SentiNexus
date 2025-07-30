@@ -46,7 +46,7 @@ body.light-theme h1 {
 
 /* Dark theme specific styles */
 body.dark-theme {
-    background-color: #282c34;
+    background-color: #0a0a1a;
     color: #e0e0e0;
 }
 
