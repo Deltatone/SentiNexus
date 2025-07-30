@@ -5,7 +5,7 @@
   // Load saved theme from localStorage
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.body.classList.add(savedTheme);
-  icon.src = savedTheme === 'dark' ? 'sun-icon.svg' : 'moon-icon.svg';
+  icon.src = savedTheme === 'dark' ? 'favicon1.png';
 
   toggle.addEventListener('click', () => {
     const isDark = document.body.classList.contains('dark-mode');
@@ -13,7 +13,7 @@
     document.body.classList.toggle('light-mode', isDark);
 
     // Update icon
-    icon.src = isDark ? 'moon-icon.svg' : 'sun-icon.svg';
+    icon.src = isDark ? 'favicon1.png';
 
     // Save preference
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
