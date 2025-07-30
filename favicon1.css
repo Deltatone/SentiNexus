@@ -1,13 +1,18 @@
-.theme-toggle {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  z-index: 1000;
+/* Example content of your icons.css file */
+.icon-small {
+    width: 16px;
+    height: 16px;
+    display: inline-block; /* Or block, depending on use case */
 }
 
-.theme-toggle img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
+.icon-medium {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+/* Or specific icon styles */
+.my-custom-icon {
+    width: 32px;
+    height: 32px;
 }
