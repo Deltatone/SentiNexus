@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body; // Reference to the body element
-
+    const faviconLink = document.querySelector('link[rel="icon"]');
     // --- Element Existence Checks ---
     if (!toggleButton || !themeIcon || !body) {
         console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
@@ -15,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
         light: {
             className: 'light-theme',
             iconSrc: 'favicon1.png', // Your light theme icon
-            iconAlt: 'Sun icon for light theme'
+            iconAlt: 'Sun icon for light theme',
+            faviconScr: 'favicon1.png'
         },
         dark: {
             className: 'dark-theme',
             iconSrc: 'favicond.png', // Your dark theme icon
-            iconAlt: 'Moon icon for dark theme'
+            iconAlt: 'Moon icon for dark theme',
+            faviconScr: 'favicond.png
         }
     };
 
