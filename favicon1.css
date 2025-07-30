@@ -1,0 +1,13 @@
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.theme-toggle img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
