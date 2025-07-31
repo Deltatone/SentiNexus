@@ -1,84 +1,163 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <h1><a href="index.html">SentiNexus</a></h1>
-  <link rel="icon" href="favicon1.png" type="image/png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Post an Opportunity</title>
-  <link rel="stylesheet" href="styles.css" />
-    <nav>
-      <ul>
-        <li><a href="login.html">Log in</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search Opportunities</a></li>
-        <li><a href="post.html">Post Opportunities</a></li>
-      </ul>
-    </nav>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Post an Opportunity - SentiNexus</title>
+
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="icons.css" />
 </head>
-<body>
-  <header>
-    <h1>Post a Volunteer Opportunity</h1>
-  </header>
+<body class="light-theme">
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" class="icon-medium" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
 
-  <form id="opportunityForm">
-    <input type="text" id="name" placeholder="Organization Name" required /><br/>
-    <select id="type" required>
-      <option value="">Select Type</option>
-      <option value="Nonprofit">Nonprofit</option>
-      <option value="Grassroots">Grassroots</option>
-      <option value="Corporate">Corporate</option>
-    </select><br/>
-    <input type="text" id="location" placeholder="Location (City, State)" required /><br/>
-    <label for="difficulty">Difficulty (1-5):</label>
-    <input type="number" id="difficulty" min="1" max="5" required /><br/>
-    <select id="time" required>
-      <option value="">Select Time Commitment</option>
-      <option value="One-time">One-time</option>
-      <option value="Weekly">Weekly</option>
-      <option value="Full-time">Full-time</option>
-    </select><br/>
-    <textarea id="description" placeholder="Opportunity Description" required></textarea><br/>
-    <button type="submit">Submit Opportunity</button>
-  </form>
+    <main>
+        <section class="post-opportunity-section">
+            <h2>Post a Volunteer Opportunity</h2>
 
-  <script>
-    document.getElementById("opportunityForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const opportunity = {
-        name: document.getElementById("name").value,
-        type: document.getElementById("type").value,
-        location: document.getElementById("location").value,
-        difficulty: parseInt(document.getElementById("difficulty").value),
-        time_commitment: document.getElementById("time").value,
-        description: document.getElementById("description").value
-      };
+            <form id="opportunityForm" class="opportunity-form">
+                <input type="text" id="name" placeholder="Organization Name" required /><br/>
+                <select id="type" required>
+                    <option value="">Select Type</option>
+                    <option value="Nonprofit">Nonprofit</option>
+                    <option value="Grassroots">Grassroots</option>
+                    <option value="Corporate">Corporate</option>
+                </select><br/>
+                <input type="text" id="location" placeholder="Location (City, State)" required /><br/>
+                <label for="difficulty">Difficulty (1-5):</label>
+                <input type="number" id="difficulty" min="1" max="5" required /><br/>
+                <select id="time" required>
+                    <option value="">Select Time Commitment</option>
+                    <option value="One-time">One-time</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Full-time">Full-time</option>
+                </select><br/>
+                <textarea id="description" placeholder="Opportunity Description" required></textarea><br/>
+                <button type="submit">Submit Opportunity</button>
+            </form>
+        </section>
+    </main>
 
-      fetch("opportunities.json")
-        .then(response => response.json())
-        .then(data => {
-          data.push(opportunity);
-          return fetch("opportunities.json", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-        })
-        .then(() => {
-          alert("Opportunity submitted successfully!");
-          document.getElementById("opportunityForm").reset();
-        })
-        .catch(error => {
-          console.error("Error submitting opportunity:", error);
+    <footer>
+        <p>Never miss a post!</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19jmEDvX9r/" target="_blank" aria-label="Follow us on Facebook">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/company/sentinexus/" target="_blank" aria-label="Follow us on LinkedIn">
+                <img src="path/to/x-icon.png" alt="LinkedIn">
+            </a>
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Follow us on Instagram">
+                <img src="path/to/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png',
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            // Original script for form submission
+            document.getElementById("opportunityForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const opportunity = {
+                    name: document.getElementById("name").value,
+                    type: document.getElementById("type").value,
+                    location: document.getElementById("location").value,
+                    difficulty: parseInt(document.getElementById("difficulty").value),
+                    time_commitment: document.getElementById("time").value,
+                    description: document.getElementById("description").value
+                };
+
+                // NOTE: This fetch operation will only work if 'opportunities.json' exists and is writable
+                // on the server where this HTML is hosted. For a local file system, this won't save data.
+                fetch("opportunities.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        data.push(opportunity);
+                        return fetch("opportunities.json", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(data)
+                        });
+                    })
+                    .then(() => {
+                        alert("Opportunity submitted successfully!");
+                        document.getElementById("opportunityForm").reset();
+                        // Redirect to success page after successful submission
+                        window.location.href = "success.html";
+                    })
+                    .catch(error => {
+                        console.error("Error submitting opportunity:", error);
+                        alert("There was an error submitting the opportunity. Please try again.");
+                    });
+            });
         });
-    });
-  </script>
+    </script>
 </body>
 </html>
