@@ -1,66 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Opportunity Posted Successfully - SentiNexus</title>
+
     <link rel="icon" href="favicon1.png" type="image/png">
-    <meta charset="UTF-8">
-    <title>Opportunity Posted Successfully</title>
-    <link rel="stylesheet" href="styles.css">
-     <h1><a href="index.html">SentiNexus</a></h1>
-        <nav>
-      <ul>
-        <li><a href="login.html">Log in</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search Opportunities</a></li>
-        <li><a href="post.html">Post Opportunities</a></li>
-      </ul>
-    </nav>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="icons.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            padding: 40px;
-            text-align: center;
-        }
-        .container {
-            background: white;
+        /* Specific styles for the success page, integrated to override/complement styles.css if needed */
+        .success-container { /* Changed from .container to avoid potential conflicts with global 'container' classes */
+            background: var(--card-background-color); /* Use CSS variable for consistency */
             padding: 30px;
             border-radius: 8px;
             max-width: 600px;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: var(--card-shadow); /* Use CSS variable for consistency */
+            text-align: center;
+            color: var(--text-color); /* Use CSS variable for consistency */
         }
-        h1 {
-            color: #2c3e50;
+        .success-container h2 { /* Changed from h1 to h2 for consistency with main content heading hierarchy */
+            color: var(--primary-color); /* Use CSS variable for consistency */
+            margin-bottom: 20px;
         }
-        p {
+        .success-container p {
             font-size: 1.2em;
             margin: 20px 0;
         }
-        a {
+        .success-container .button-link { /* Added a class for specific styling of these buttons */
             display: inline-block;
             margin: 10px;
             padding: 10px 20px;
-            background: #3498db;
-            color: white;
+            background: var(--button-background-color); /* Use CSS variable for consistency */
+            color: var(--button-text-color); /* Use CSS variable for consistency */
             text-decoration: none;
             border-radius: 5px;
+            transition: background 0.3s ease;
         }
-        a:hover {
-            background: #2980b9;
+        .success-container .button-link:hover {
+            background: var(--button-hover-background-color); /* Use CSS variable for consistency */
         }
+        /* Body styles are typically handled by styles.css and the theme script, removed inline body style */
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Thank You!</h1>
-        <p>Your volunteer opportunity has been successfully posted.</p>
-        <a href="search.html">Search Opportunities</a>
-        <a href="index.html">Return to Home</a>
-    </div>
+<body class="light-theme">
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" class="icon-medium" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
+
+    <main>
+        <section class="success-section">
+            <div class="success-container">
+                <h2>Thank You!</h2>
+                <p>Your volunteer opportunity has been successfully posted.</p>
+                <a href="search.html" class="button-link">Search Opportunities</a>
+                <a href="index.html" class="button-link">Return to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Never miss a post!</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19jmEDvX9r/" target="_blank" aria-label="Follow us on Facebook">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/company/sentinexus/" target="_blank" aria-label="Follow us on LinkedIn">
+                <img src="path/to/x-icon.png" alt="LinkedIn">
+            </a>
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Follow us on Instagram">
+                <img src="path/to/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png',
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
