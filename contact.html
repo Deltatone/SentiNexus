@@ -1,52 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="favicon1.png" type="image/png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | SentiNexus</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | SentiNexus</title>
-  <link rel="stylesheet" href="styles.css" />
-   <h1><a href="index.html">SentiNexus</a></h1>
-      <nav>
-      <ul>
-        <li><a href="login.html">Log in</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search Opportunities</a></li>
-        <li><a href="post.html">Post Opportunities</a></li>
-      </ul>
-    </nav>
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="icons.css" />
 </head>
-<body>
-  <main>
-    <section class="contact-section">
-      <h2>Get in Touch</h2>
-      <p>
-        Have questions, ideas, or just want to connect? Ryan would love to hear from you. Whether it’s tech, environmental initiatives, or collaboration opportunities, you’re always welcome at SentiNexus.
-      </p>
+<body class="light-theme">
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" class="icon-medium" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
 
-      <div class="contact-info">
-        <p><strong>Phone:</strong> <a href="tel:+13476398513">347-639-8513</a></p>
-        <p><strong>Email:</strong> <a href="mailto:rlehningpro1@gmail.com">rlehningpro1@gmail.com</a></p>
-      </div>
+    <main>
+        <section class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>
+                Have questions, ideas, or just want to connect? Ryan would love to hear from you. Whether it’s tech, environmental initiatives, or collaboration opportunities, you’re always welcome at SentiNexus.
+            </p>
 
-      <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required />
+            <div class="contact-info">
+                <p><strong>Phone:</strong> <a href="tel:+13476398513">347-639-8513</a></p>
+                <p><strong>Email:</strong> <a href="mailto:rlehningpro1@gmail.com">rlehningpro1@gmail.com</a></p>
+            </div>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required />
+            <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required />
 
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="5" placeholder="Share your thoughts..."></textarea>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required />
 
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </main>
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Share your thoughts..."></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Never miss a post!</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19jmEDvX9r/" target="_blank" aria-label="Follow us on Facebook">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/company/sentinexus/" target="_blank" aria-label="Follow us on LinkedIn">
+                <img src="path/to/x-icon.png" alt="LinkedIn">
+            </a>
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Follow us on Instagram">
+                <img src="path/to/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png',
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
