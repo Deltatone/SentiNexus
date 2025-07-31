@@ -45,7 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Store preference in localStorage
         localStorage.setItem('theme', themeName);
     }
+    const favicon = document.getElementById('favicon');
 
+// Function to update the favicon based on the current color scheme
+const updateFavicon = () => {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    favicon.href = 'favicon-dark.ico'; // Path to your dark mode favicon
+  } else {
+    favicon.href = 'favicon-light.ico'; // Path to your light mode favicon
+  }
+};
+
+// Initial update when the page loads
+updateFavicon();
+
+// Listen for changes in the user's color scheme preference
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
     // --- Initial Theme Load ---
     const savedTheme = localStorage.getItem('theme') || 'light'; // Default to 'light' if no preference saved
     applyTheme(savedTheme);
