@@ -1,45 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="favicon1.png" type="image/png">
-  <link rel="stylesheet" href="styles.css" />
-  <meta charset="UTF-8">
-  <title>SentiNexus Dashboard</title>
-</head>
-<body>
-    <h1><a href="index.html">SentiNexus</a></h1>
-    <nav>
-      <ul>
-        <li><a href="login.html">Log in</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search Opportunities</a></li>
-        <li><a href="post.html">Post Opportunities</a></li>
-      </ul>
-    </nav>
-  <!-- Your dashboard content here -->
-  <div style="max-width: 400px; margin: 40px auto; text-align: center; font-family: Arial, sans-serif;">
-  <h2>How are you doing today?</h2>
-  <input type="text" id="userFeeling" placeholder="Type your answer here..." style="padding: 8px; width: 70%;">
-  <button onclick="showFeeling()" style="padding: 8px 16px; margin-left: 8px;">Submit</button>
-  <p id="responseMessage" style="margin-top: 20px; color: #0066cc;"></p>
-</div>
-<script>
-  function showFeeling() {
-    const feeling = document.getElementById('userFeeling').value.trim();
-    const response = document.getElementById('responseMessage');
-    if (feeling) {
-      response.textContent = `Thanks for sharing! You said: "${feeling}"`;
-    } else {
-      response.textContent = "Please tell us how you're doing!";
-    }
-  }
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SentiNexus Dashboard</title>
 
-  <!-- Link to your dashboard JS file -->
-  <script src="dashboard.js"></script>
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="icons.css" />
+    <style>
+        /* Specific styles for the dashboard content */
+        .dashboard-container { /* Changed class name to avoid potential conflicts */
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+            font-family: Arial, sans-serif; /* Keep if specific to this container */
+            background: var(--card-background-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            color: var(--text-color);
+        }
+        .dashboard-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .dashboard-container input[type="text"] {
+            padding: 8px;
+            width: calc(70% - 16px); /* Adjust width for padding */
+            margin-right: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--input-background-color);
+            color: var(--text-color);
+        }
+        .dashboard-container button {
+            padding: 8px 16px;
+            background-color: var(--button-background-color);
+            color: var(--button-text-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dashboard-container button:hover {
+            background-color: var(--button-hover-background-color);
+        }
+        .dashboard-container p {
+            margin-top: 20px;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" class="icon-medium" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
+
+    <main>
+        <section class="dashboard-section">
+            <div class="dashboard-container">
+                <h2>How are you doing today?</h2>
+                <input type="text" id="userFeeling" placeholder="Type your answer here...">
+                <button onclick="showFeeling()">Submit</button>
+                <p id="responseMessage"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Never miss a post!</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19jmEDvX9r/" target="_blank" aria-label="Follow us on Facebook">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/company/sentinexus/" target="_blank" aria-label="Follow us on LinkedIn">
+                <img src="path/to/x-icon.png" alt="LinkedIn">
+            </a>
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Follow us on Instagram">
+                <img src="path/to/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png',
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            // Original script for dashboard functionality
+            function showFeeling() {
+                const feeling = document.getElementById('userFeeling').value.trim();
+                const response = document.getElementById('responseMessage');
+                if (feeling) {
+                    response.textContent = `Thanks for sharing! You said: "${feeling}". Remember, your feelings are valid.`;
+                } else {
+                    response.textContent = "Please tell us how you're feeling.";
+                }
+            }
+            // Attach the function to the window object so it can be called from onclick
+            window.showFeeling = showFeeling;
+        });
+    </script>
 </body>
 </html>
