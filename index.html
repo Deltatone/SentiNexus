@@ -6,37 +6,6 @@
     <title>SentiNexus</title>
     
     <link rel="icon" href="favicon1.png" type="image/png">
-    <link rel="icon" href="favicon1.png" media="(prefers-color-scheme: light)">
-<link rel="icon" href="favicond.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="favicon1.png"> ```
-
-**Explanation:**
-
-* The `media` attribute in the `<link>` tag allows you to specify a media query. The browser will automatically choose the appropriate favicon based on the user's `prefers-color-scheme` setting.
-
-### 3. Using SVG favicons with inline CSS (More advanced, but highly flexible)
-
-If your favicon is a simple graphic, you can use an SVG file and embed CSS within the SVG itself to change colors based on `prefers-color-scheme`. This means you only need one favicon file!
-
-**`favicon.svg`:**
-
-```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <style>
-    circle {
-      fill: black;
-      stroke: black;
-      stroke-width: 5px;
-    }
-    @media (prefers-color-scheme: dark) {
-      circle {
-        fill: white;
-        stroke: white;
-      }
-    }
-  </style>
-  <circle cx="50" cy="50" r="45" />
-</svg>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
