@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Function to update the favicon based on the current color scheme
 const updateFavicon = () => {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    favicon.href = 'favicon-dark.ico'; // Path to your dark mode favicon
+    favicon.href = 'favicond.png'; // Path to your dark mode favicon
   } else {
-    favicon.href = 'favicon-light.ico'; // Path to your light mode favicon
+    favicon.href = 'favicon1.png'; // Path to your light mode favicon
   }
 };
 
