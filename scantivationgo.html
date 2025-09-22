@@ -70,13 +70,35 @@
         .login-form .forgot-password:hover {
             text-decoration: underline;
         }
-            main {
-    background-image: url('squirrel.png');
+/* styles.css */
+main {
+    background-image: var(--main-bg-image); /* Use the CSS variable here */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Optional: Add a fallback background color */
-    background-color: #f0f0f0; 
+    background-attachment: fixed; /* Optional: Makes the background image fixed while scrolling */
+    min-height: 100vh; /* Optional: Ensure main takes full height to see the background */
+
+    /* Optional: Add a subtle overlay for better text readability, especially with busy images */
+    position: relative;
+    z-index: 1; /* Ensure text is above the pseudo-element */
+}
+
+/* Optional: Overlay for readability */
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay for light image */
+    z-index: -1; /* Place behind content */
+    transition: background-color 0.3s ease; /* Smooth transition for overlay */
+}
+
+body.dark-theme main::before {
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker overlay for dark image if needed */
 }
     </style>
 </head>
