@@ -66,7 +66,9 @@ body.dark-theme #theme-toggle {
 
 :root {
     /* Light theme default for the main background */
-    --main-bg-image: url('squirrel.png'); 
+    --main-bg-image: url('squirrel.png');
+       background-color: #f0f0f0;
+    color: #333;
     /* ... other light theme variables like --color-background, etc. */
 }
 
