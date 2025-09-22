@@ -1,100 +1,169 @@
-from bs4 import BeautifulSoup
-
-# Load the original index HTML file
-with open("index (1).html", "r", encoding="utf-8") as file:
-    original_html = file.read()
-
-# Parse the original HTML to extract header and footer
-soup = BeautifulSoup(original_html, "html.parser")
-
-# Extract header and footer content
-header = soup.find("header")
-footer = soup.find("footer")
-
-# Create the new HTML content
-new_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>SentiLedger Login</title>
+    
+    <link rel="icon" href="favicon1.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="icons.css" />
     <style>
-        body {{
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }}
-        main {{
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }}
-        .login-container {{
+        .login-form {
             max-width: 400px;
-            width: 100%;
+            margin: 50px auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--color-border);
             border-radius: 8px;
-            background-color: #f9f9f9;
-        }}
-        .login-container h1 {{
+            background-color: var(--color-background-soft);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+        }
+
+        .login-form h2 {
             margin-bottom: 20px;
-        }}
-        .login-container input {{
-            width: 100%;
+            color: var(--color-heading);
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: calc(100% - 20px);
             padding: 10px;
-            margin: 10px 0;
-            box-sizing: border-box;
-        }}
-        .login-container button {{
+            margin-bottom: 15px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        .login-form button {
             width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
+            padding: 12px;
             border: none;
             border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-        }}
-        .login-container button:hover {{
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
             background-color: #0056b3;
-        }}
-        .forgot-password {{
-            text-align: center;
-            margin-top: 10px;
-        }}
-        .forgot-password a {{
-            color: #007BFF;
+        }
+
+        .login-form .forgot-password {
+            display: block;
+            margin-top: 15px;
+            color: var(--color-text-light);
             text-decoration: none;
-        }}
+            font-size: 14px;
+        }
+        
+        .login-form .forgot-password:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body>
-    {header}
+<body class="light-theme">
+    <header>
+        <h1><a href="index.html">SentiNexus</a></h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="search.html">Search Opportunities</a></li>
+                <li><a href="post.html">Post Opportunities</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <img id="theme-icon" class="icon-medium" src="favicon1.png" alt="Sun icon for light theme">
+        </button>
+    </header>
+
     <main>
-        <div class="login-container">
-            <h1>SentiLedger</h1>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <button type="submit">Sign In</button>
-            <div class="forgot-password">
-                <a href="#">Forgot Password?</a>
-            </div>
-        </div>
+        <section class="login-form">
+            <h2>SentiLedger</h2>
+            <form action="#" method="post">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+            </form>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </section>
     </main>
-    {footer}
+
+    <footer>
+        <p>Never miss a post!</p>
+        <div class="social-links">
+            <a href="https://www.sentiledger.org" target="_blank" aria-label="SentiLedger">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.facebook.com/share/19jmEDvX9r/" target="_blank" aria-label="Follow us on Facebook">
+                <img src="path/to/facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/company/sentinexus/" target="_blank" aria-label="Follow us on LinkedIn">
+                <img src="path/to/x-icon.png" alt="LinkedIn">
+            </a>
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Follow us on Instagram">
+                <img src="path/to/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>&copy; 2025 SentiNexus. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            if (!toggleButton || !themeIcon || !body) {
+                console.error('Theme script: One or more required elements (theme-toggle, theme-icon, or body) not found. Script will not function.');
+                return;
+            }
+
+            const themes = {
+                light: {
+                    className: 'light-theme',
+                    iconSrc: 'favicon1.png',
+                    iconAlt: 'Sun icon for light theme'
+                },
+                dark: {
+                    className: 'dark-theme',
+                    iconSrc: 'favicond.png',
+                    iconAlt: 'Moon icon for dark theme'
+                }
+            };
+
+            function applyTheme(themeName) {
+                body.classList.remove(themes.light.className, themes.dark.className);
+                body.classList.add(themes[themeName].className);
+                themeIcon.src = themes[themeName].iconSrc;
+                themeIcon.alt = themes[themeName].iconAlt;
+                toggleButton.setAttribute('aria-pressed', themeName === 'dark' ? 'true' : 'false');
+                toggleButton.setAttribute('aria-label', `Switch to ${themeName === 'dark' ? 'light' : 'dark'} theme`);
+                localStorage.setItem('theme', themeName);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            toggleButton.addEventListener('click', () => {
+                const currentThemeIsDark = body.classList.contains(themes.dark.className);
+                const newTheme = currentThemeIsDark ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
-""".format(header=str(header) if header else "", footer=str(footer) if footer else "")
-
-# Save the new HTML page
-with open("sentiledger_login.html", "w", encoding="utf-8") as file:
-    file.write(new_html)
-
-print("The login page 'sentiledger_login.html' has been created successfully.")
